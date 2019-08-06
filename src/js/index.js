@@ -8,13 +8,6 @@ import * as listView from './views/listView';
 import * as likeView from './views/likeView';
 import { elements, renderLoader, clearLoader} from './views/base';
 
-/** Global state of the app
- * - search object
- * - Current recipe object
- * - shopping list object
- * - Liked recipes
- */
-
 /***************************************************
  * search controller
  ****************************************************/
@@ -22,25 +15,25 @@ const state = {};
 window.state = state;
 
 const controlSearch = async () => {
-  // 1) Get query from view
+  // 1) 获取查询值
   const query = searchView.getInput(); 
 
   if (query) {
-    // 2) New search object and add to state
+    // 2) 新建搜索对象，并复制给 state
     state.search = new Search(query);
 
-    // 3) Prepare UI for results
-    searchView.clearInput();
-    searchView.clearRes();
-    renderLoader(elements.searchResList);
+    // 3) UI 控件
+    searchView.clearInput();                  // 清除输入框
+    searchView.clearRes();                    // 展示搜索结果前，需清除前一次的搜索结果
+    renderLoader(elements.searchResList);     // 显示缓冲 UI 控件
 
     try {
-      // 4) Search for recipes
+      // 4) 搜索结果添加到全局 state 对象中 （保存搜索数据）
       await state.search.getResults();
   
-      // 5) Render results on UI
-      clearLoader();
-      searchView.renderResults(state.search.result);
+      // 5) 更新 UI，显示搜索结果
+      clearLoader();                                      // 清除缓冲 UI 控件
+      searchView.renderResults(state.search.result);      // 显示结果
     } catch (error) {
       alert('Error processing search!');
       clearLoader();
