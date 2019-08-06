@@ -142,7 +142,7 @@ const controlLikes = () => {
 
   const currentID = state.recipe.id;
   
-  // state.likes has NOT yet liked current recipe.
+  // state.likes 没有喜欢的菜谱
   if (!state.likes.isLiked(currentID)) {
     // Add like to the state
     const newLike = state.likes.addLike(
@@ -155,7 +155,8 @@ const controlLikes = () => {
       likeView.toggleLikeBtn(true);
     // Add like to UI list
     likeView.renderLikes(newLike);
-  // state.likes HAS liked current recipe
+
+  // state.likes 中有喜欢的菜谱
   } else {
     // remove like to the state
     state.likes.deleteLike(currentID);
@@ -163,10 +164,11 @@ const controlLikes = () => {
     likeView.toggleLikeBtn(false);
     likeView.deleteLikeItem(currentID);
   } 
+
   likeView.toggleLikeList(state.likes.getNumLikes());
 };
 
-// Restore liked recipes on page load
+// 页面加载的时候，重新显示喜欢列表，使用 localStorage API 存储数据
 window.addEventListener('load', () => {
   state.likes = new Likes();
 

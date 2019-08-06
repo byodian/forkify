@@ -7,7 +7,7 @@ export default class Likes {
     const like = { id, title, author, img };
     this.likes.push(like);
 
-    // Perist data in localStorage
+    // 同步 localStorage 数据
     this.persitData();
 
     return like;
@@ -16,10 +16,10 @@ export default class Likes {
   deleteLike(id) {
     const index = this.likes.findIndex(el => el.id === id);
 
-    // Perist data in localStorage
-    this.persitData();
-
     this.likes.splice(index, 1);
+
+    // 同步 localStorage 数据
+    this.persitData();
   }
 
   isLiked(id) {
@@ -37,7 +37,7 @@ export default class Likes {
   readStorage() {
     const storage = JSON.parse(localStorage.getItem('likes'));
 
-    // Restoring likes from the localStorage
+    // 重新存储数据到 localStorage
     if (storage) this.likes = storage;
   }
 }
