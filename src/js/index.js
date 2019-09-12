@@ -7,6 +7,11 @@ import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
 import * as likeView from './views/likeView';
 import { elements, renderLoader, clearLoader} from './views/base';
+import icons from '../img/icons.svg';
+import favicon from '../img/favicon.png';
+import logo from '../img/logo.png';
+
+
 
 /***************************************************
  * search controller
