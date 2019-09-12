@@ -1,5 +1,21 @@
-# 菜谱搜索应用
+菜谱搜索应用
 
-此应用使用菜谱 API，通过使用 JavaScript ES6、AJAX、面向对象编程以及使用 Webpack 打包的技术构建应用。
+[View Online](https://byo-forkify.netlify.com/)
 
-[Demo](https://byodian.github.io/forkify/dist/index.html)
+
+**相关技术**
+
+- ES6
+- webpack
+- babel
+- axios
+- uniqid
+- fraction.js
+- Recipe API
+
+此项目来源于课程[The Complete JavaScript Course 2019](https://www.udemy.com/the-complete-javascript-course/)
+
+
+
+
+
